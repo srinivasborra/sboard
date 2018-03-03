@@ -1,0 +1,62 @@
+<form name="frmTask"  novalidate>
+	<div class="modal-header">
+	 	<h4 class="modal-title">Task</h4>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="project_Name">Project Name:</label>
+					
+					<select class="form-control" id="project_Name" placeholder="Select a Project" 
+					ng-options="project.projectId as project.projectName for project in projects" ng-model="task.projectId" 
+					ng-change="showStoryDetails(task.projectId)"  ng-select="{{project.projectId==task.projectId}}" ></select>
+					
+					<!-- <select class="form-control" id="project_Name" placeholder="Select a Project" 
+					ng-options="project.projectId as project.projectName for project in projects" ng-model="task.projectId" 
+					ng-change="getStoriesByProject(task.projectId)"  ng-select="{{project.projectId==task.projectId}}" ></select> -->
+				</div>
+				<div class="form-group">
+					<label for="story_Title">Story Title:</label>
+				    <!-- <select class="form-control" id="story_Title" placeholder="Select a Story" 
+					ng-init="showStoryDetails(task.projectId)"  ng-model="task.story[$index]">
+						<option ng-repeat="story in stories" value="{{story.storyId}}">{{story.storyTitle}}</option>
+					</select>  -->
+					 <select class="form-control" id="story_Title" placeholder="Select a Story" ng-init="showStoryDetails(task.projectId)"
+					ng-options="story.storyId as story.storyTitle for story in stories" ng-model="task.storyId" 
+					ng-change="getStoryDescById(task.storyId)"></select> 
+					
+				</div>
+				<div class="form-group">
+					<label for="story_Desc">Story Description:</label>
+					<textarea class="form-control" id="story_Desc" ng-model="task.storyDesc" cols="96%" rows="5">{{task.storyDesc}}</textarea>
+				</div>
+				<div class="form-group">
+					<label for="task_Title">Task Title:</label>
+					<input class="form-control" id="task_Title" ng-model="task.taskTitle">
+				</div>
+				<div class="form-group">
+					<label for="task_Status">Task Status:</label>
+					<select class="form-control" id="task_Status" ng-model="task.status">
+						<option value="0">Blockers</option>
+						<option value="1">To Do</option>
+						<option value="2">Work in Progress</option>
+						<option value="3">Done</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="task_member">Task Assigned To:</label>
+					<select class="form-control" id="task_member" placeholder="Task Assigned To" 
+					ng-options="teammember.teamMemberEmployeeId as teammember.teamMemberName for teammember in teammembers" 
+					ng-model="task.teamMemberEmployeeId" ng-select="{{teammember.teamMemberEmployeeId==task.teamMemberEmployeeId}}"
+					></select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-click="closeTaskForm()">Cancel</button>
+		<button type="submit" class="btn btn-primary" ng-click="saveTask(task)">Save</button>
+	</div>
+</form>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.divClass').draggable({
+		axis:'x'
+	});
+	$('.divClass').on('mousedown',function(){
+		var maxZindex=0;
+		$(this).siblings('.divClass').each(function(){
+			var currentZindex=Number($(this).css('z-index'));
+			maxZindex=currentZindex > maxZindex ? currentZindex : maxZindex;
+		});
+		$(this).css('z-index',maxZindex+1);
+	});
+});
+</script>
+<style>
+	.divClass{
+		height:200px;
+		width:200px;
+		color:white;
+		display:table-cell;
+		vertical-align:middle;
+		text-align:center;
+	}
+</style>
+</head>
+<body>
+<div id='redDiv' class="divClass" style="background-color:red">
+	Red Div
+</div>
+<div id='greenDiv' class="divClass" style="background-color:green">
+	Green Div
+</div>
+<div id='blueDiv' class="divClass" style="background-color:blue">
+	Blue Div
+</div>
+<div id='yelloDiv' class="divClass" style="background-color:yellow">
+	Yellow Div
+</div>
+
+</body>
+</html>

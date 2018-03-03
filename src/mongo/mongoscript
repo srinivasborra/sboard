@@ -1,0 +1,12 @@
+#show dbs
+db.createCollection("project");
+db.sequence.insert({_id: "storysequence",seq: 0});
+db.sequence.find();
+db.createCollection("story");
+
+
+
+
+
+
+

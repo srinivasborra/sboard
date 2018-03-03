@@ -1,0 +1,40 @@
+<form name="frmStory"  ng-controller="storyController" novalidate>
+	<div class="modal-header">
+	 	<h5 class="modal-title">Story</h5>
+	 </div>
+	 <div class="modal-body">
+	 		<div class="row">
+	 			<div class="col-sm-6">
+		 			<div class="form-group">
+						<label for="project_Name">Project Name:</label>
+						<select class="form-control" id="project_Name" placeholder="Select a Project" 
+						ng-options="project.projectId as project.projectName for project in projects" ng-model="story.projectId" 
+						ng-selected="{{project.projectId == story.projectId}}"></select>
+					</div>
+					
+					<div class="form-group">
+						<label for="story_Title">Story Title:</label>
+						<input class="form-control" id="story_Title" placeholder="Enter Story Title" ng-model="story.storyTitle"  required>
+					</div>
+					<div class="form-group">
+						<label for="story_Description">Story Description:</label>
+						<textarea class="form-control" id="story_Description" placeholder="Enter Story Description" ng-model="story.storyDescription" style="resize:none;" required></textarea>
+					</div>
+					<div class="form-group">
+						<label for="story_Status">Status:</label>
+						<select class="form-control" id="story_Status" placeholder="Story Status" ng-model="story.status">
+							<option value="1">Open</option>
+							<option value="0">Close</option>
+						</select>
+					</div>
+	 			</div>
+	 		</div>
+	 </div>
+	 <div class="modal-footer">
+	 	<button class="btn btn-default" ng-click="closeStoryForm()">Cancel</button>
+	 	<button class="btn btn-primary" type="submit"  ng-click="saveStory(story)">Save</button>
+	 </div>
+</form>
+
+
+

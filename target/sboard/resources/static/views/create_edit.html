@@ -1,0 +1,29 @@
+ 
+  <form name="frmProject"  novalidate>
+  <button type="button" class="close" ng-click="closeProjectForm()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	 <div class="modal-header">
+	 	<h4 class="modal-title">Project</h4>
+	 </div>
+ 	<div class="modal-body">
+ 	<div class="row">
+		<div class="col-sm-6">			
+			<div class="form-group">
+				<label for="project_Name">Enter Project Name:</label>
+				<input class="form-control" id="pName" placeholder="" ng-model="project.projectName"  required>
+			</div>
+			<div class="form-group">
+				<label for="project_Status">Status:</label>
+				<select class="form-control" id="project_Status" placeholder="Project Status" ng-model="project.status" 
+				 ng-select="project.status">
+					<option value="1">Open</option>
+					<option value="0">Close</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-click="closeProjectForm()">Cancel</button>
+		<button type="submit" class="btn btn-primary" ng-click="saveProject(project)">Save</button>
+	</div>
+</form>

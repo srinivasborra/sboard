@@ -1,0 +1,61 @@
+<form name="frmTeam"  novalidate>
+	<div class="modal-header">
+	 	<h4 class="modal-title">Team Member</h4>
+	 </div>
+	 <div class="modal-body">
+ 		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="project_Name">Project Name:</label>
+					<select class="form-control" id="project_Name" placeholder="Select a Project" 
+					ng-options="project.projectId as project.projectName for project in projects" ng-model="team.projectId"></select>
+				</div>
+				<div class="form-group">
+					<label for="team_empid">Employee Id:</label>
+					<input class="form-control" id="team_empid" placeholder="Enter Employee Id" ng-model="team.teamMemberEmployeeId"  required>
+				</div>
+				<div class="form-group">
+					<label for="team_empname">Employee Name:</label>
+					<input class="form-control" id="team_empname" placeholder="Enter Employee Name" ng-model="team.teamMemberName"  required>
+				</div>
+				<div class="form-group">
+					<label for="status">Status:</label>
+					<select class="form-control" id="status" placeholder="Employee Status" ng-model="team.status">
+						<option value="1">Active</option>
+						<option value="0">Inactive</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-click="closeTeamForm()">Cancel</button>
+		<button type="submit" class="btn btn-primary" ng-click="saveTeam(team)">Save</button>
+	</div>
+</form>
+<!-- 
+<div id="modalteam" ng-controller="teamController">
+ <form name="frmTeam"  novalidate>
+	<div class="form-group">
+		<label for="project_Name">Project Name:</label>
+		<select class="form-control" id="project_Name" placeholder="Select a Project" 
+		ng-options="project.projectId as project.projectName for project in projects" ng-model="team.projectId"></select>
+		
+		<select class="form-control" id="project_Name" placeholder="Select a Project">
+			<option ng-repeat="project in projects" value="{{project.projectId}}" ng-selected="{{project.projectId == team.projectId}}">{{project.projectName}}</option>
+		</select>
+		
+		<label for="team_empid">Employee Id:</label>
+		<input class="form-control" id="team_empid" placeholder="Enter Employee Id" ng-model="team.teamMemberEmployeeId"  required>
+		<label for="team_empname">Employee Name:</label>
+		<input class="form-control" id="team_empname" placeholder="Enter Employee Name" ng-model="team.teamMemberName"  required>
+		<label for="status">Status:</label>
+		<select class="form-control" id="status" placeholder="Employee Status" ng-model="team.status">
+			<option value="1">Active</option>
+			<option value="0">Inactive</option>
+		</select>
+	</div>
+	<button type="submit" class="btn btn-default" ng-click="saveTeam(team)">Save</button>
+	<button class="btn btn-warning" ng-click="closeTeamForm()">Cancel</button>
+</form>
+</div> -->

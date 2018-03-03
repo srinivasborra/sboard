@@ -1,0 +1,58 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+<style>
+	#todolist li .done-true  {
+    color: #777777;
+    text-decoration: line-through;
+}
+</style>
+<div ng-app="todoApp">
+	<div ng-controller="todoController">
+		<header>
+			<label for="txtTodo">Todo:</label><input id="txtTodo" type="text" size="30" placeholder="What needs to do?" ng-model="todoText" ng-keyup="addTodoTask()"/>
+			<br/><input id="toggle-all" type="checkbox" ng-model="markAll" ng-click="toggleMarkAll()"/><label for="toggle-all">All tasks are completed</label>
+		</header>
+		<section>
+			<ul id="todolist" >
+				<li ng-repeat="todo in todos">
+					<input type="checkbox" ng-model="todo.done" ng-click="checkMarkAll()"/>
+					<span class="done-{{todo.done}}">{{todo.text}}</span>
+				</li>
+			</ul>
+		</section>
+		<footer>
+		<span id="taskCount" ng-show="totalTasks > 0">Total tasks:{{totalTasks}}</span>
+		</footer>
+	</div>
+</div>
+<script>
+	var app=angular.module('todoApp',[]);
+	app.controller("todoController",function($scope){
+		$scope.todos=[];
+		$scope.markAll = false;
+		$scope.addTodoTask=function(){
+			if(event.keyCode==13 && $scope.todoText){
+				$scope.todos.push({text:$scope.todoText,done:false});
+				$scope.todoText='';	
+			}
+			$scope.totalTasks=$scope.todos.length;
+			
+		};
+		$scope.toggleMarkAll=function(){
+			angular.forEach($scope.todos,function(todo){
+				todo.done=$scope.markAll;
+			});
+		}
+		$scope.checkMarkAll=function(){
+			for(i=0;i<$scope.todos.length;i++){
+				if(!$scope.todos[i].done){
+					$scope.markAll=false;
+					break;
+				}else{
+					$scope.markAll=true;
+				}
+			}
+			
+		}
+		
+	});
+</script>
